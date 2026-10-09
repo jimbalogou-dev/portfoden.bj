@@ -132,7 +132,7 @@ function SideTitle({ icon: Icon, children }: { icon?: ComponentType<IconProps>; 
 function MainTitle({ icon: Icon, children }: { icon: ComponentType<IconProps>; children: ReactNode }) {
   return (
     <div className="flex items-center gap-2">
-      <span className="w-6 h-6 rounded-full flex items-center justify-center" style={{ background: NAVY }}>
+      <span className="w-6 h-6 rounded-full flex items-center justify-center shrink-0" style={{ background: NAVY }}>
         <Icon size={13} className="text-white" />
       </span>
       <h2 className="font-display font-bold text-base tracking-wide" style={{ color: BLUE }}>
@@ -145,23 +145,21 @@ function MainTitle({ icon: Icon, children }: { icon: ComponentType<IconProps>; c
 export default function CvPage() {
   return (
     <div className="cv-page min-h-screen" style={{ background: 'var(--bg)' }}>
-      <header className="max-w-4xl mx-auto px-6 pt-8 pb-4 flex items-center justify-between">
+      <header className="max-w-4xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8 pb-4 flex flex-wrap items-center justify-between gap-3"> {/* ✅ en-tête adaptable */}
         <Link to="/" className="flex items-center gap-2 text-sm text-muted hover:text-cyan transition-colors">
           <ArrowLeft size={16} />
           Retour à l'accueil
         </Link>
-        <a href="/cv-denis-balogou.pdf" download className="btn-cyan flex items-center gap-2 text-sm">
+        <a href="/cv-denis-balogou.pdf" download className="btn-cyan flex items-center gap-2 text-xs sm:text-sm"> {/* ✅ texte réduit sur téléphone */}
           Télécharger en PDF <Download size={14} />
         </a>
       </header>
 
-      <main className="max-w-4xl mx-auto px-4 pb-16">
-        <div className="grid md:grid-cols-[36%_64%] bg-white shadow-2xl rounded-lg overflow-hidden">
+      <main className="max-w-4xl mx-auto px-3 sm:px-4 pb-10 sm:pb-16"> {/* ✅ marges réduites */}
+        <div className="grid grid-cols-1 md:grid-cols-[36%_64%] bg-white shadow-2xl rounded-lg overflow-hidden"> {/* ✅ grid-cols-1 */}
           {/* COLONNE GAUCHE */}
-          <aside className="text-white px-7 py-8" style={{ background: NAVY }}>
-            <div className="w-40 h-40 md:w-44 md:h-44 rounded-full overflow-hidden bg-[#EDEDED] mx-auto mb-10">
-            
-            </div>
+          <aside className="text-white px-5 sm:px-7 py-6 sm:py-8" style={{ background: NAVY }}> {/* ✅ marges réduites */}
+            <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full overflow-hidden bg-[#EDEDED] mx-auto mb-8 md:mb-10" /> {/* ✅ cercle plus petit sur téléphone */}
 
             <section className="mb-8">
               <SideTitle>COORDONNÉES</SideTitle>
@@ -212,9 +210,9 @@ export default function CvPage() {
           </aside>
 
           {/* COLONNE DROITE */}
-          <div className="px-8 py-8 text-[#1A1A1A]">
+          <div className="px-5 sm:px-8 py-6 sm:py-8 text-[#1A1A1A]"> {/* ✅ marges réduites */}
             <h1
-              className="text-center text-4xl md:text-5xl tracking-wide mb-8"
+              className="text-center text-3xl sm:text-4xl md:text-5xl tracking-wide mb-6 md:mb-8" // ✅ nom plus petit sur téléphone
               style={{ fontFamily: "'Bangers', sans-serif", color: BLUE }}
             >
               A. DENIS BALOGOU
@@ -258,14 +256,14 @@ export default function CvPage() {
                   <div key={exp.title} className="flex gap-3">
                     <p className="w-12 shrink-0 text-sm font-bold pt-0.5">{exp.year}</p>
                     <div
-                      className="relative flex-1 border-l-2 pl-6 pb-7 last:pb-0"
+                      className="relative flex-1 min-w-0 border-l-2 pl-4 sm:pl-6 pb-7 last:pb-0" // ✅ min-w-0 et pl-4 sm:pl-6
                       style={{ borderColor: LIGHT_BLUE }}
                     >
                       <span
                         className="absolute -left-[7px] top-1 w-3 h-3 rounded-full"
                         style={{ background: LIGHT_BLUE }}
                       />
-                      <h3 className="text-[13px] font-extrabold mb-2 tracking-wide">{exp.title}</h3>
+                      <h3 className="text-[13px] font-extrabold mb-2 tracking-wide break-words">{exp.title}</h3> {/* ✅ break-words */}
                       <ul className="space-y-0.5">
                         {exp.bullets.map((b) => (
                           <li key={b} className="text-[11.5px] leading-snug text-gray-700">
