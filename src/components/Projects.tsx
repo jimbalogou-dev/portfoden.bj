@@ -74,7 +74,7 @@ export default function Projects() {
   const rest = filtered.filter((p) => p.id !== featured?.id)
 
   return (
-    <section id="projets" className="py-28">
+    <section id="projets" className="py-16 md:py-28">
       <div className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
@@ -93,7 +93,7 @@ export default function Projects() {
               <button
                 key={c}
                 onClick={() => setFilter(c)}
-                className={`pill px-4 py-2 text-sm transition-colors ${
+                className={`pill px-3 sm:px-4 py-2 text-xs sm:text-sm transition-colors ${
                   filter === c ? 'btn-cyan' : 'glass text-muted hover:text-ink'
                 }`}
               >
@@ -112,7 +112,7 @@ export default function Projects() {
             transition={{ duration: 0.3 }}
           >
             {featured && (
-              <div className="glass rounded-2xl overflow-hidden grid md:grid-cols-2 mb-6">
+              <div className="glass rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2 mb-6">
                 <div
                className="relative min-h-56 overflow-hidden surface-panel"
           > {featured.image && <img src={featured.image} alt={featured.title} className=" absolute inset-0 w-full h-full object-cover object-top" />}
@@ -131,7 +131,7 @@ export default function Projects() {
                       </span>
                     ))}
                   </div>
-                  <div className="flex gap-3">
+                  <div className="flex flex-wrap gap-3">
                     <a href={featured.demo} className="btn-cyan flex items-center gap-1.5 text-sm">
                       Voir le projet <ExternalLink size={14} />
                     </a>
@@ -143,7 +143,7 @@ export default function Projects() {
               </div>
             )}
 
-            <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-5">
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
               {rest.map((p, i) => (
                 <motion.div
                   key={p.id}
@@ -171,15 +171,15 @@ export default function Projects() {
               </span>
               ))}
           </div>
-          <div className="flex gap-3">
+          <div className="flex flex-wrap gap-3">
          <a href={p.demo} className="btn-cyan flex items-center gap-1.5 text-xs !px-4 !py-2">
           Voir le projet <ExternalLink size={12} />
           </a>
          <a href={p.code} className="btn-outline flex items-center gap-1.5 text-xs !px-4 !py-2">
        Voir le code <GithubIcon size={12} />
-    </a>
-  </div>
-</div>
+                 </a>
+                 </div>
+                </div>
                 </motion.div>
               ))}
             </div>

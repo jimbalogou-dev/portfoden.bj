@@ -22,14 +22,19 @@ export default function Hero() {
         style={{ background: 'radial-gradient(700px 400px at 85% 10%, rgba(34,211,238,0.14), transparent 60%)' }}
       />
 
-      <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-[1.1fr,0.9fr] gap-16 items-center relative">
-        <motion.div initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.6 }}>
-          <span className="badge-live relative inline-flex items-center gap-2 pill glass px-4 py-2 text-xs mb-6">
+      <div className="max-w-6xl mx-auto px-6 grid grid-cols-1 lg:grid-cols-[1.1fr,0.9fr] gap-10 lg:gap-16 items-center relative">
+        <motion.div
+          className="min-w-0"
+          initial={{ opacity: 0, y: 16 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.6 }}
+        >
+          <span className="badge-live relative inline-flex max-w-full items-center gap-2 pill glass px-3 sm:px-4 py-2 text-[10px] sm:text-xs leading-snug mb-6">
             <span className="dot-live" />
             DISPONIBLE POUR DES PROJETS & COLLABORATIONS
           </span>
 
-          <h1 className="font-display font-bold text-4xl md:text-5xl lg:text-[3.3rem] leading-[1.1] mb-6">
+          <h1 className="font-display font-bold text-3xl sm:text-4xl md:text-5xl lg:text-[3.3rem] leading-[1.1] mb-6">
             Concevoir des solutions web modernes et <span className="text-cyan">intelligentes.</span>
           </h1>
 

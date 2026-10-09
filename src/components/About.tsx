@@ -9,8 +9,8 @@ const STATS = [
 
 export default function About() {
   return (
-    <section id="apropos" className="py-28">
-      <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-[1.1fr,0.9fr] gap-16 items-center">
+    <section id="apropos" className="py-16 md:py-28">
+      <div className="max-w-6xl mx-auto px-6 grid lg:grid-cols-[1.1fr,0.9fr] gap-12 lg:gap-16 items-center">
         <motion.div
           initial={{ opacity: 0, y: 16 }}
           whileInView={{ opacity: 1, y: 0 }}
@@ -33,9 +33,9 @@ export default function About() {
             fonctionnelle et évolutive.
           </p>
 
-          <div className="flex gap-10">
+          <div className="flex gap-4 sm:gap-10">
             {STATS.map((s, i) => (
-              <div key={s.label} className={i > 0 ? 'pl-10 border-l border-border' : ''}>
+              <div key={s.label} className={i > 0 ? 'pl-4 sm:pl-10 border-l border-border' : ''}>
                 <p className="font-display font-bold text-2xl md:text-3xl text-cyan mb-1">{s.value}</p>
                 <p className="text-xs text-muted">{s.label}</p>
               </div>
