@@ -8,13 +8,15 @@ import {
   MapPin,
   Globe,
   Code2,
-  Briefcase,
-  GraduationCap,
+
 } from 'lucide-react'
 
 const NAVY = '#12325F'
 const BLUE = '#1F4A8F'
 const LIGHT_BLUE = '#4C9BE8'
+
+// Pour ajouter ta photo : mets l'image dans public/ puis écris par ex. '/photo.jpg'
+const PHOTO = ''
 
 type IconProps = { size?: number; className?: string }
 
@@ -34,50 +36,71 @@ function LinkedinIcon({ size = 14, className = '' }: IconProps) {
   )
 }
 
+function SchoolIcon({ size = 14, className = '' }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M5 13.18v4L12 21l7-3.82v-4L12 17l-7-3.82zM12 3L1 9l11 6 9-4.91V17h2V9L12 3z" />
+    </svg>
+  )
+}
+
+function WorkIcon({ size = 14, className = '' }: IconProps) {
+  return (
+    <svg width={size} height={size} viewBox="0 0 24 24" fill="currentColor" className={className}>
+      <path d="M20 6h-4V4c0-1.11-.89-2-2-2h-4c-1.11 0-2 .89-2 2v2H4c-1.11 0-1.99.89-1.99 2L2 19c0 1.11.89 2 2 2h16c1.11 0 2-.89 2-2V8c0-1.11-.89-2-2-2zm-6 0h-4V4h4v2z" />
+    </svg>
+  )
+}
+
 const COORDONNEES: { icon: ComponentType<IconProps>; text: string }[] = [
   { icon: Mail, text: 'jimbalogou@gmail.com' },
-  { icon: Phone, text: '+229 01 99 31 54 06' },
+  { icon: Phone, text: '+299 01 99 31 54 06' },
   { icon: MapPin, text: 'Abomey-Calavi / Bénin' },
   { icon: GithubIcon, text: 'jimbalogou-dev' },
-  { icon: Globe, text: 'denportfo.vercel.app' },
-  { icon: LinkedinIcon, text: 'linkedin.com/in/denis-balogou' },
+  { icon: Globe, text: 'portfodenbj.vercel.app' },
+  { icon: LinkedinIcon, text: 'linkedin.com/in/denis-balogou-bj' },
 ]
 
+
+  
 const FORMATIONS = [
-  { year: '2026', text: "Étudiant en fin de formation professionnelle en développement web à l'EIG BÉNIN" },
+  { year: '2026', text: 'Étudiant en fin de formation professionnelle en développement web à l’EIG BÉNIN' },
   {
     year: '2026',
     text: 'Attestation de suivi de cours en ligne sur les analyses, les enjeux et les actions du développement durable',
   },
   {
     year: '2021',
-    text: "Licence en Linguistique anglaise — Faculté des Lettres, Langues, Arts et Communication, Université d'Abomey-Calavi",
+    text: 'Licence en Linguistique anglaise — Faculté des Lettres, Langues, Arts et Communication, Université d’Abomey-Calavi',
   },
-  { year: '2018', text: 'Baccalauréat série A1 — CEG1 Glazoué' },
-  { year: '2014', text: "Brevet d'Étude du Premier Cycle (BEPC) — CEG Yagbo" },
-  { year: '2014', text: "Certificat d'Études Primaires (CEP) — EPP Simon-Doho" },
+  { year: '2018', text: 'Baccalauréat série A1 CEG1 Glazoué' },
+  { year: '2014', text: 'Brevet d’Étude du Premier Cycle (BEPC) CEG Yagbo' },
+  { year: '2014', text: 'Certificat d’Études Primaires (CEP) EPP Simon-Doho' },
 ]
 
 const LANGUAGES = ['Français - Langue nationale', 'Anglais - Bilingue / Linguist']
 
-const INTERESTS = ['Développement, innovation technologique', 'Apprentissage continu', "Concept d'interfaces"]
+const INTERESTS = ['Développement, innovation technologique', 'Apprentissage continu', 'Concept d’interfaces']
 
 const SKILLS = [
-  { title: 'FRONT-END', items: ['HTML', 'CSS', 'TAILWIND CSS', 'JAVASCRIPT (ES6+)', 'REACT.JS, NEXT.JS', 'WORDPRESS'] },
-  { title: 'BACK-END', items: ['NODE.JS', 'EXPRESS.JS', 'PHP', 'LARAVEL'] },
-  { title: 'BASES DE DONNÉES', items: ['SQL, POSTGRESQL, MONGODB'] },
+  {
+    title: 'FRONT-END',
+    text: 'HTML • CSS • TAILWIND CSS • JAVASCRIPT (ES6+) • REACT.JS, NEXT.JS • WORDPRESS',
+  },
+  { title: 'BACK-END', text: 'NODE.JS • EXPRESS.JS • PHP • LARAVEL' },
+  { title: 'BASES DE DONNÉES', text: 'MYSQL, POSTGRESQL, MONGODB' },
   {
     title: 'CONCEPTS & OUTILS',
-    items: ["CONCEPTION D'INTERFACES", 'XAMPP', 'GIT', 'GITHUB', 'VS CODE', 'RENDER', 'VERCEL'],
+    text: 'CONCEPTION D’INTERFACES • XAMP • GIT • GITHUB • VS CODE • RENDER • VERCEL',
   },
 ]
 
 const EXPERIENCES = [
   {
     year: '2026',
-    title: 'DÉVELOPPEUR WEB — PROJET « PROMPTÉTÈE IA »',
+    title: 'DÉVELOPPEUR - PROJET « PROMPTEQUE IA »',
     bullets: [
-      "Développement de l'interface utilisateur dynamique en React et Vite.",
+      'Développement de l\'interface utilisateur dynamique en React et Vite.',
       'Déploiement et intégration continue du front-end sur Vercel.',
       'Développement du serveur et des fonctionnalités back-end avec Node.js.',
       'Optimisation du design responsive et de la navigation.',
@@ -87,35 +110,35 @@ const EXPERIENCES = [
   },
   {
     year: '2026',
-    title: 'DÉVELOPPEUR WEB — PROJET « BOUTIQUE PRÊT-À-PORTER »',
+    title: 'DÉVELOPPEUR - PROJET « BOUTIQUE PRÊT-À-PORTER »',
     bullets: [
-      "Conception d'architectures de bases de données et modélisation (diagrammes UML).",
-      "Développement d'applications web dynamiques avec Laravel.",
-      'Intégration de base de données en SQL.',
+      'Conception d\'architectures de bases de données et modélisation (diagrammes UML).',
+      'Développement d\'applications web dynamiques avec Laravel..',
+      'Intégration de base de donnée en SQL.',
       'Optimisation du design responsive et de la navigation.',
       'Déploiement du projet sur Render.',
     ],
   },
   {
     year: '2026',
-    title: 'DÉVELOPPEUR FULL-STACK — PROJET ACADÉMIQUE « AUTOCOST »',
+    title: 'DÉVELOPPEUR - PROJET ACADÉMIQUE « AUTOCOST »',
     bullets: [
-      "Conception et développement d'un site web d'estimation de coûts des véhicules.",
-      "Développement de l'interface utilisateur dynamique avec React.js et Vite.",
+      'Conception et développement d\'un site web d\'estimation de coûts des véhicules.',
+      'Développement de l\'interface utilisateur dynamique avec React.js et Vite.',
       'Développement du serveur et des fonctionnalités back-end avec Node.js.',
       'Conception et gestion de la base de données avec MongoDB.',
-      "Intégration des échanges entre l'interface, le serveur et la base de données.",
+      'Intégration des échanges entre l’interface, le serveur et la base de données.',
       'Déploiement et intégration continue du front-end sur Vercel.',
       'Optimisation du design responsive et de la navigation.',
     ],
   },
   {
     year: '2026',
-    title: 'DÉVELOPPEUR WEB — PROJET « SEGURO »',
+    title: 'DÉVELOPPEUR - PROJET « SEGURO »',
     bullets: [
-      "Application web pour hôtel permettant de consulter les informations et d'effectuer des réservations sur la plateforme.",
-      'Développement avec PHP, avec la structure du HTML, du CSS et les fonctionnalités du JavaScript et du Bootstrap.',
-      'Intégration de base de données en SQL.',
+      'Application web pour hôtel permettant de consulter les informations et d’effectuer des réservations sur la plateforme.',
+      'Développement avec PHP , avec la structure du HTML, du CSS et les fonctionnalités du JavaScript et du Bootstrap.',
+      'Intégration de base de donnée en SQL.',
     ],
   },
 ]
@@ -153,29 +176,32 @@ function MainTitle({ icon: Icon, children }: { icon: ComponentType<IconProps>; c
 export default function CvPage() {
   return (
     <div className="cv-page min-h-screen overflow-x-hidden" style={{ background: 'var(--bg)' }}>
+      {/* EN-TÊTE : Retour à gauche, Télécharger à droite, sur PC et téléphone */}
       <header className="max-w-4xl mx-auto px-3 sm:px-6 pt-5 sm:pt-8 pb-3 sm:pb-4 flex flex-row flex-nowrap items-center justify-between gap-2">
-  <Link
-    to="/"
-    className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-muted hover:text-cyan transition-colors whitespace-nowrap"
-  >
-    <ArrowLeft size={16} />
-    Retour à l'accueil
-  </Link>
-  <a
-    href="/cv-denis-balogou.pdf"
-    download
-    className="btn-cyan flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-sm whitespace-nowrap"
-  >
-    Télécharger en PDF <Download size={14} />
-  </a>
-</header>
+        <Link
+          to="/"
+          className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-muted hover:text-cyan transition-colors whitespace-nowrap"
+        >
+          <ArrowLeft size={16} />
+          Retour à l'accueil
+        </Link>
+        <a
+          href="/cv-denis-balogou.pdf"
+          download
+          className="btn-cyan flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-sm whitespace-nowrap"
+        >
+          Télécharger en PDF <Download size={14} />
+        </a>
+      </header>
 
       <main className="max-w-4xl mx-auto px-2 sm:px-4 pb-10 sm:pb-16">
-        {/* Deux colonnes côte à côte, même sur téléphone (comme le PDF) */}
+        {/* Deux colonnes collées, comme le PDF, sur PC et téléphone */}
         <div className="grid grid-cols-[34%_66%] md:grid-cols-[36%_64%] bg-white shadow-2xl rounded-md sm:rounded-lg overflow-hidden">
           {/* COLONNE GAUCHE */}
           <aside className="min-w-0 text-white px-2 sm:px-7 py-4 sm:py-8" style={{ background: NAVY }}>
-            <div className="w-14 h-14 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full overflow-hidden bg-[#EDEDED] mx-auto mb-5 sm:mb-10" />
+            <div className="w-14 h-14 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full overflow-hidden bg-[#EDEDED] border-[3px] sm:border-4 border-white mx-auto mb-6 sm:mb-12">
+              {PHOTO && <img src={PHOTO} alt="A. Denis Balogou" className="w-full h-full object-cover" />}
+            </div>
 
             <section className="mb-5 sm:mb-8">
               <SideTitle>COORDONNÉES</SideTitle>
@@ -196,7 +222,7 @@ export default function CvPage() {
             </section>
 
             <section className="mb-5 sm:mb-8">
-              <SideTitle icon={GraduationCap}>FORMATIONS & CERTIFICATIONS</SideTitle>
+              <SideTitle icon={SchoolIcon}>FORMATIONS & CERTIFICATIONS</SideTitle>
               <div className="space-y-2.5 sm:space-y-4">
                 {FORMATIONS.map((f) => (
                   <div key={f.year + f.text} className="flex gap-1.5 sm:gap-3">
@@ -219,7 +245,7 @@ export default function CvPage() {
             </section>
 
             <section>
-              <SideTitle>CENTRES D'INTÉRÊT</SideTitle>
+              <SideTitle>CENTRES D’INTÉRÊT</SideTitle>
               {INTERESTS.map((i) => (
                 <p key={i} className="text-[7.5px] sm:text-xs text-white/85 mb-0.5 leading-tight">
                   {i}
@@ -242,10 +268,10 @@ export default function CvPage() {
                 Profil
               </h2>
               <p className="text-[8px] sm:text-[12.5px] leading-relaxed text-gray-700">
-                Développeur d'application web en JavaScript et PHP, avec une pratique du React.js et Next.js
-                côté front-end, ainsi que Node.js, Express.js et Laravel côté back-end. Je conçois des
-                solutions web modernes, performantes et intelligentes adaptées aux besoins réels, avec une
-                attention particulière portée à l'expérience utilisateur, à la qualité du code et à la
+                Développeur d’application web avec JavaScript et PHP, avec une pratique du React.js et Next.js
+                côté front-end, ainsi que Node.js, Express.js et Laravel côté back-end . Je conçois des
+                solutions web modernes, performantes et intelligeantes adaptées aux besoins réels, avec une
+                attention particulière portée à l’expérience utilisateur, à la qualité du code et à la
                 sécurité.
               </p>
             </section>
@@ -264,7 +290,7 @@ export default function CvPage() {
                       {s.title}
                     </h3>
                     <p className="text-[7.5px] sm:text-[11.5px] tracking-wide text-gray-700 break-words">
-                      {s.items.join(' • ')}
+                      {s.text}
                     </p>
                   </div>
                 ))}
@@ -272,7 +298,7 @@ export default function CvPage() {
             </section>
 
             <section>
-              <MainTitle icon={Briefcase}>EXPÉRIENCES PROFESSIONNELLES & PROJETS</MainTitle>
+              <MainTitle icon={WorkIcon}>EXPÉRIENCES PROFESSIONNELLES & PROJETS</MainTitle>
               <div className="border-b mt-2 sm:mt-3 mb-4 sm:mb-6" style={{ borderColor: LIGHT_BLUE }} />
 
               <div>
@@ -307,7 +333,7 @@ export default function CvPage() {
             </section>
 
             <p className="text-center text-[8px] sm:text-[11px] font-bold mt-6 sm:mt-10" style={{ color: BLUE }}>
-              A. Denis BALOGOU, Développeur d'application web
+              A. Denis BALOGOU, Développeur d’application web
             </p>
           </div>
         </div>
