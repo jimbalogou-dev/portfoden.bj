@@ -153,15 +153,22 @@ function MainTitle({ icon: Icon, children }: { icon: ComponentType<IconProps>; c
 export default function CvPage() {
   return (
     <div className="cv-page min-h-screen overflow-x-hidden" style={{ background: 'var(--bg)' }}>
-      <header className="max-w-4xl mx-auto px-3 sm:px-6 pt-5 sm:pt-8 pb-3 sm:pb-4 flex flex-wrap items-center justify-between gap-3">
-        <Link to="/" className="flex items-center gap-2 text-sm text-muted hover:text-cyan transition-colors">
-          <ArrowLeft size={16} />
-          Retour à l'accueil
-        </Link>
-        <a href="/cv-denis-balogou.pdf" download className="btn-cyan flex items-center gap-2 text-xs sm:text-sm">
-          Télécharger en PDF <Download size={14} />
-        </a>
-      </header>
+      <header className="max-w-4xl mx-auto px-3 sm:px-6 pt-5 sm:pt-8 pb-3 sm:pb-4 flex flex-row flex-nowrap items-center justify-between gap-2">
+  <Link
+    to="/"
+    className="flex items-center gap-1.5 sm:gap-2 text-xs sm:text-sm text-muted hover:text-cyan transition-colors whitespace-nowrap"
+  >
+    <ArrowLeft size={16} />
+    Retour à l'accueil
+  </Link>
+  <a
+    href="/cv-denis-balogou.pdf"
+    download
+    className="btn-cyan flex items-center gap-1.5 sm:gap-2 text-[11px] sm:text-sm whitespace-nowrap"
+  >
+    Télécharger en PDF <Download size={14} />
+  </a>
+</header>
 
       <main className="max-w-4xl mx-auto px-2 sm:px-4 pb-10 sm:pb-16">
         {/* Deux colonnes côte à côte, même sur téléphone (comme le PDF) */}
