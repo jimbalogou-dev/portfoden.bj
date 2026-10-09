@@ -113,10 +113,16 @@ export default function Projects() {
           >
             {featured && (
               <div className="glass rounded-2xl overflow-hidden grid grid-cols-1 md:grid-cols-2 mb-6">
-                <div
-               className="relative min-h-56 overflow-hidden surface-panel"
-          > {featured.image && <img src={featured.image} alt={featured.title} className=" absolute inset-0 w-full h-full object-cover object-top" />}
-                Visuel du projet
+                <div className="relative md:min-h-56 overflow-hidden surface-panel"> {/* ✅ md:min-h-56 */}
+                  {featured.image ? (
+                    <img
+                      src={featured.image}
+                      alt={featured.title}
+                      className="w-full h-auto md:absolute md:inset-0 md:h-full md:object-cover md:object-top" // ✅ image entière sur téléphone
+                    />
+                  ) : (
+                    'Visuel du projet' // ✅ affiché seulement s'il n'y a pas d'image
+                  )}
                 </div>
                 <div className="p-6 md:p-8 flex flex-col justify-center">
                   <div className="flex items-center justify-between mb-3">
@@ -153,33 +159,39 @@ export default function Projects() {
                   transition={{ duration: 0.5, delay: i * 0.08 }}
                   className="glass rounded-2xl overflow-hidden"
                 >
-                   <div
-                    className="h-40 overflow-hidden surface-panel"
-                > {p.image && <img src={p.image} alt={p.title} className="w-full h-full object-cover" />}
-                   Visuel du projet
+                  <div className="sm:h-40 overflow-hidden surface-panel"> {/* ✅ sm:h-40 */}
+                    {p.image ? (
+                      <img
+                        src={p.image}
+                        alt={p.title}
+                        className="w-full h-auto sm:h-full object-cover" // ✅ image entière sur téléphone
+                      />
+                    ) : (
+                      'Visuel du projet' // ✅ seulement s'il n'y a pas d'image
+                    )}
                   </div>
-                   <div className="p-5">
-                 <div className="flex items-center justify-between mb-2">
-                 <h3 className="font-display font-semibold">{p.title}</h3>
-                <span className="text-xs text-muted">{p.year}</span>
-               </div>
-               <p className="text-sm text-muted mb-3">{p.description}</p>
-              <div className="flex flex-wrap gap-1.5 mb-4">
-               {p.tech.map((t) => (
-               <span key={t} className="text-xs px-2 py-0.5 rounded-full bg-cyan/10 text-cyan">
-               {t}
-              </span>
-              ))}
-          </div>
-          <div className="flex flex-wrap gap-3">
-         <a href={p.demo} className="btn-cyan flex items-center gap-1.5 text-xs !px-4 !py-2">
-          Voir le projet <ExternalLink size={12} />
-          </a>
-         <a href={p.code} className="btn-outline flex items-center gap-1.5 text-xs !px-4 !py-2">
-       Voir le code <GithubIcon size={12} />
-                 </a>
-                 </div>
-                </div>
+                  <div className="p-5">
+                    <div className="flex items-center justify-between mb-2">
+                      <h3 className="font-display font-semibold">{p.title}</h3>
+                      <span className="text-xs text-muted">{p.year}</span>
+                    </div>
+                    <p className="text-sm text-muted mb-3">{p.description}</p>
+                    <div className="flex flex-wrap gap-1.5 mb-4">
+                      {p.tech.map((t) => (
+                        <span key={t} className="text-xs px-2 py-0.5 rounded-full bg-cyan/10 text-cyan">
+                          {t}
+                        </span>
+                      ))}
+                    </div>
+                    <div className="flex flex-wrap gap-3">
+                      <a href={p.demo} className="btn-cyan flex items-center gap-1.5 text-xs !px-4 !py-2">
+                        Voir le projet <ExternalLink size={12} />
+                      </a>
+                      <a href={p.code} className="btn-outline flex items-center gap-1.5 text-xs !px-4 !py-2">
+                        Voir le code <GithubIcon size={12} />
+                      </a>
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </div>

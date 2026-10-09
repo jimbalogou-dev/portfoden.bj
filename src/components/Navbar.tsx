@@ -38,7 +38,7 @@ export default function Navbar() {
     setTheme(next)
   }
 
-    return (
+  return (
     <nav
       className={`fixed w-full z-50 transition-colors ${scrolled ? 'nav-scrolled' : ''}`}
       style={{ top: 'env(safe-area-inset-top, 0px)' }}
@@ -48,7 +48,7 @@ export default function Navbar() {
           A. DENIS<span className="text-cyan"> BALOGOU</span>
         </a>
 
-        <div className="hidden md:flex items-center glass pill p-1 gap-1">
+        <div className="hidden lg:flex items-center glass pill p-1 gap-1">
           {LINKS.map((l) => (
             <a key={l.href} href={l.href} className={`navlink ${active === l.href.slice(1) ? 'active' : ''}`}>
               {l.label}
@@ -57,7 +57,7 @@ export default function Navbar() {
         </div>
 
         <div className="flex items-center gap-3">
-                    <Link
+          <Link
             to="/cv"
             className="hidden lg:flex items-center gap-2 pill glass px-4 py-2 text-xs hover:border-cyan hover:text-cyan transition-colors"
           >
@@ -67,17 +67,33 @@ export default function Navbar() {
           <button onClick={toggleTheme} aria-label="Changer de thème" className="pill glass w-[38px] h-[38px] flex items-center justify-center">
             {theme === 'dark' ? '☾' : '☀'}
           </button>
-          <button className="md:hidden text-xl" onClick={() => setMenuOpen((o) => !o)} aria-label="Menu">☰</button>
+          <button
+            className="lg:hidden w-[38px] h-[38px] flex items-center justify-center text-xl" 
+            onClick={() => setMenuOpen((o) => !o)}
+            aria-label={menuOpen ? 'Fermer le menu' : 'Ouvrir le menu'} 
+            aria-expanded={menuOpen} 
+          >
+            {menuOpen ? '✕' : '☰'} 
+          </button>
         </div>
       </div>
 
       {menuOpen && (
-        <div className="md:hidden glass mx-4 mb-3 rounded-xl p-3 flex flex-col gap-1 text-sm">
+        <div className="lg:hidden glass mx-4 mb-3 rounded-xl p-3 flex flex-col gap-1 text-sm">
           {LINKS.map((l) => (
             <a key={l.href} href={l.href} className="navlink" onClick={() => setMenuOpen(false)}>
               {l.label}
             </a>
           ))}
+    
+          <Link
+            to="/cv"
+            onClick={() => setMenuOpen(false)}
+            className="mt-2 flex items-center justify-center gap-2 pill glass px-4 py-2.5 text-xs hover:border-cyan hover:text-cyan transition-colors"
+          >
+            <FileText size={14} />
+            Voir mon CV
+          </Link>
         </div>
       )}
     </nav>

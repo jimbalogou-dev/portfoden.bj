@@ -71,7 +71,7 @@ export default function Hero() {
           initial={{ opacity: 0, y: 16 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.15 }}
-          className="hidden lg:block lg:-mx-6"
+          className="min-w-0 lg:-mx-6" // ✅ visible sur tous les écrans (avant : hidden lg:block)
         >
           <LaptopShowcase />
         </motion.div>

@@ -65,7 +65,7 @@ const CHIPS = [
 function ScreenSlide({ slide, position, total }: { slide: Slide; position: number; total: number }) {
   return (
     <div
-      className="w-full h-full flex flex-col px-4 pt-3 pb-3 text-white"
+      className="w-full h-full flex flex-col px-3 sm:px-4 pt-3 pb-3 text-white" // ✅ px-3 sm:px-4
       style={{ background: 'linear-gradient(135deg, #090E1F 0%, #0D1633 45%, ' + slide.color + ' 170%)' }}
     >
       <div className="flex items-center justify-between mb-2">
@@ -75,10 +75,10 @@ function ScreenSlide({ slide, position, total }: { slide: Slide; position: numbe
         <span className="text-[10px] tracking-widest text-white/50">{slide.year}</span>
       </div>
 
-      <div className="flex items-center gap-3 mb-2">
-        <h3 className="font-display font-bold text-xl leading-tight">{slide.title}</h3>
+      <div className="flex items-center gap-2 sm:gap-3 mb-2"> {/* ✅ gap-2 sm:gap-3 */}
+        <h3 className="font-display font-bold text-base sm:text-xl leading-tight">{slide.title}</h3> {/* ✅ text-base sm:text-xl */}
         <span
-          className="text-[10px] tracking-widest px-2.5 py-1 rounded-full"
+          className="text-[9px] sm:text-[10px] tracking-widest px-2 sm:px-2.5 py-1 rounded-full" // ✅ tailles réduites sur téléphone
           style={{ background: slide.color + '66', color: '#FFFFFF' }}
         >
           {slide.category.toUpperCase()}
@@ -118,12 +118,12 @@ export default function LaptopShowcase() {
   }, [index])
 
   return (
-    <div className="relative mx-auto w-full max-w-[680px] px-10 py-10">
+    <div className="relative mx-auto w-full max-w-[680px] px-3 py-6 sm:px-10 sm:py-10"> {/* ✅ marges réduites sur téléphone */}
       <div
         className="relative rounded-2xl overflow-hidden border border-border shadow-2xl"
         style={{ boxShadow: '0 30px 60px -20px rgba(0,0,0,0.5)' }}
       >
-        <div className="flex items-center gap-1.5 px-4 py-3 bg-black/40">
+        <div className="flex items-center gap-1.5 px-3 sm:px-4 py-2 sm:py-3 bg-black/40"> {/* ✅ barre du haut plus fine */}
           <span className="w-2.5 h-2.5 rounded-full bg-[#F87171]" />
           <span className="w-2.5 h-2.5 rounded-full bg-[#FBBF24]" />
           <span className="w-2.5 h-2.5 rounded-full bg-[#34D399]" />
@@ -144,7 +144,7 @@ export default function LaptopShowcase() {
           </AnimatePresence>
         </div>
 
-        <div className="flex items-center gap-2 px-6 py-4 bg-black/40">
+        <div className="flex items-center gap-2 px-4 sm:px-6 py-3 sm:py-4 bg-black/40"> {/* ✅ barre de progression plus fine */}
           {SLIDES.map((s, i) => (
             <button
               key={s.title}
