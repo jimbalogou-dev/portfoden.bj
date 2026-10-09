@@ -122,20 +122,28 @@ const EXPERIENCES = [
 
 function SideTitle({ icon: Icon, children }: { icon?: ComponentType<IconProps>; children: ReactNode }) {
   return (
-    <div className="flex items-center gap-2 mb-4">
-      {Icon && <Icon size={15} className="text-white" />}
-      <h2 className="font-display font-bold text-sm tracking-wide text-white">{children}</h2>
+    <div className="flex items-center gap-1 sm:gap-2 mb-2 sm:mb-4">
+      {Icon && <Icon size={14} className="text-white shrink-0" />}
+      <h2 className="font-display font-bold text-[9px] sm:text-sm tracking-wide text-white leading-tight">
+        {children}
+      </h2>
     </div>
   )
 }
 
 function MainTitle({ icon: Icon, children }: { icon: ComponentType<IconProps>; children: ReactNode }) {
   return (
-    <div className="flex items-center gap-2">
-      <span className="w-6 h-6 rounded-full flex items-center justify-center shrink-0" style={{ background: NAVY }}>
-        <Icon size={13} className="text-white" />
+    <div className="flex items-center gap-1.5 sm:gap-2">
+      <span
+        className="w-5 h-5 sm:w-6 sm:h-6 rounded-full flex items-center justify-center shrink-0"
+        style={{ background: NAVY }}
+      >
+        <Icon size={12} className="text-white" />
       </span>
-      <h2 className="font-display font-bold text-base tracking-wide" style={{ color: BLUE }}>
+      <h2
+        className="font-display font-bold text-[10px] sm:text-base tracking-wide leading-tight"
+        style={{ color: BLUE }}
+      >
         {children}
       </h2>
     </div>
@@ -144,56 +152,60 @@ function MainTitle({ icon: Icon, children }: { icon: ComponentType<IconProps>; c
 
 export default function CvPage() {
   return (
-    <div className="cv-page min-h-screen" style={{ background: 'var(--bg)' }}>
-      <header className="max-w-4xl mx-auto px-4 sm:px-6 pt-6 sm:pt-8 pb-4 flex flex-wrap items-center justify-between gap-3"> {/* ✅ en-tête adaptable */}
+    <div className="cv-page min-h-screen overflow-x-hidden" style={{ background: 'var(--bg)' }}>
+      <header className="max-w-4xl mx-auto px-3 sm:px-6 pt-5 sm:pt-8 pb-3 sm:pb-4 flex flex-wrap items-center justify-between gap-3">
         <Link to="/" className="flex items-center gap-2 text-sm text-muted hover:text-cyan transition-colors">
           <ArrowLeft size={16} />
           Retour à l'accueil
         </Link>
-        <a href="/cv-denis-balogou.pdf" download className="btn-cyan flex items-center gap-2 text-xs sm:text-sm"> {/* ✅ texte réduit sur téléphone */}
+        <a href="/cv-denis-balogou.pdf" download className="btn-cyan flex items-center gap-2 text-xs sm:text-sm">
           Télécharger en PDF <Download size={14} />
         </a>
       </header>
 
-      <main className="max-w-4xl mx-auto px-3 sm:px-4 pb-10 sm:pb-16"> {/* ✅ marges réduites */}
-        <div className="grid grid-cols-1 md:grid-cols-[36%_64%] bg-white shadow-2xl rounded-lg overflow-hidden"> {/* ✅ grid-cols-1 */}
+      <main className="max-w-4xl mx-auto px-2 sm:px-4 pb-10 sm:pb-16">
+        {/* Deux colonnes côte à côte, même sur téléphone (comme le PDF) */}
+        <div className="grid grid-cols-[34%_66%] md:grid-cols-[36%_64%] bg-white shadow-2xl rounded-md sm:rounded-lg overflow-hidden">
           {/* COLONNE GAUCHE */}
-          <aside className="text-white px-5 sm:px-7 py-6 sm:py-8" style={{ background: NAVY }}> {/* ✅ marges réduites */}
-            <div className="w-32 h-32 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full overflow-hidden bg-[#EDEDED] mx-auto mb-8 md:mb-10" /> {/* ✅ cercle plus petit sur téléphone */}
+          <aside className="min-w-0 text-white px-2 sm:px-7 py-4 sm:py-8" style={{ background: NAVY }}>
+            <div className="w-14 h-14 sm:w-40 sm:h-40 md:w-44 md:h-44 rounded-full overflow-hidden bg-[#EDEDED] mx-auto mb-5 sm:mb-10" />
 
-            <section className="mb-8">
+            <section className="mb-5 sm:mb-8">
               <SideTitle>COORDONNÉES</SideTitle>
-              <div className="space-y-3">
+              <div className="space-y-2 sm:space-y-3">
                 {COORDONNEES.map((c) => {
                   const Icon = c.icon
                   return (
-                    <div key={c.text} className="flex items-center gap-3">
-                      <span className="w-6 h-6 rounded-sm bg-white flex items-center justify-center shrink-0">
-                        <Icon size={13} className="text-[#12325F]" />
+                    <div key={c.text} className="flex items-start sm:items-center gap-1.5 sm:gap-3">
+                      <span className="w-4 h-4 sm:w-6 sm:h-6 rounded-sm bg-white flex items-center justify-center shrink-0">
+                        <Icon size={10} className="text-[#12325F] sm:hidden" />
+                        <Icon size={13} className="text-[#12325F] hidden sm:block" />
                       </span>
-                      <span className="text-xs break-all">{c.text}</span>
+                      <span className="text-[7.5px] sm:text-xs break-all leading-tight">{c.text}</span>
                     </div>
                   )
                 })}
               </div>
             </section>
 
-            <section className="mb-8">
+            <section className="mb-5 sm:mb-8">
               <SideTitle icon={GraduationCap}>FORMATIONS & CERTIFICATIONS</SideTitle>
-              <div className="space-y-4">
+              <div className="space-y-2.5 sm:space-y-4">
                 {FORMATIONS.map((f) => (
-                  <div key={f.year + f.text} className="flex gap-3">
-                    <span className="w-9 shrink-0 text-xs font-bold">{f.year}</span>
-                    <span className="text-[11px] leading-snug text-white/80">{f.text}</span>
+                  <div key={f.year + f.text} className="flex gap-1.5 sm:gap-3">
+                    <span className="w-6 sm:w-9 shrink-0 text-[8px] sm:text-xs font-bold">{f.year}</span>
+                    <span className="text-[7px] sm:text-[11px] leading-snug text-white/80 break-words min-w-0">
+                      {f.text}
+                    </span>
                   </div>
                 ))}
               </div>
             </section>
 
-            <section className="mb-8">
+            <section className="mb-5 sm:mb-8">
               <SideTitle>LANGUES</SideTitle>
               {LANGUAGES.map((l) => (
-                <p key={l} className="text-xs text-white/85 mb-0.5">
+                <p key={l} className="text-[7.5px] sm:text-xs text-white/85 mb-0.5 leading-tight">
                   {l}
                 </p>
               ))}
@@ -202,7 +214,7 @@ export default function CvPage() {
             <section>
               <SideTitle>CENTRES D'INTÉRÊT</SideTitle>
               {INTERESTS.map((i) => (
-                <p key={i} className="text-xs text-white/85 mb-0.5">
+                <p key={i} className="text-[7.5px] sm:text-xs text-white/85 mb-0.5 leading-tight">
                   {i}
                 </p>
               ))}
@@ -210,19 +222,19 @@ export default function CvPage() {
           </aside>
 
           {/* COLONNE DROITE */}
-          <div className="px-5 sm:px-8 py-6 sm:py-8 text-[#1A1A1A]"> {/* ✅ marges réduites */}
+          <div className="min-w-0 px-2.5 sm:px-8 py-4 sm:py-8 text-[#1A1A1A]">
             <h1
-              className="text-center text-3xl sm:text-4xl md:text-5xl tracking-wide mb-6 md:mb-8" // ✅ nom plus petit sur téléphone
+              className="text-center text-lg sm:text-4xl md:text-5xl tracking-wide mb-4 sm:mb-8"
               style={{ fontFamily: "'Bangers', sans-serif", color: BLUE }}
             >
               A. DENIS BALOGOU
             </h1>
 
-            <section className="mb-8">
-              <h2 className="font-display font-bold text-lg mb-2" style={{ color: BLUE }}>
+            <section className="mb-5 sm:mb-8">
+              <h2 className="font-display font-bold text-[11px] sm:text-lg mb-1 sm:mb-2" style={{ color: BLUE }}>
                 Profil
               </h2>
-              <p className="text-[12.5px] leading-relaxed text-gray-700">
+              <p className="text-[8px] sm:text-[12.5px] leading-relaxed text-gray-700">
                 Développeur d'application web en JavaScript et PHP, avec une pratique du React.js et Next.js
                 côté front-end, ainsi que Node.js, Express.js et Laravel côté back-end. Je conçois des
                 solutions web modernes, performantes et intelligentes adaptées aux besoins réels, avec une
@@ -231,17 +243,22 @@ export default function CvPage() {
               </p>
             </section>
 
-            <section className="mb-8">
-              <div className="mb-5">
+            <section className="mb-5 sm:mb-8">
+              <div className="mb-3 sm:mb-5">
                 <MainTitle icon={Code2}>COMPÉTENCES</MainTitle>
               </div>
-              <div className="space-y-4">
+              <div className="space-y-2.5 sm:space-y-4">
                 {SKILLS.map((s) => (
                   <div key={s.title}>
-                    <h3 className="font-display font-bold text-sm mb-1" style={{ color: BLUE }}>
+                    <h3
+                      className="font-display font-bold text-[9px] sm:text-sm mb-0.5 sm:mb-1"
+                      style={{ color: BLUE }}
+                    >
                       {s.title}
                     </h3>
-                    <p className="text-[11.5px] tracking-wide text-gray-700">{s.items.join(' • ')}</p>
+                    <p className="text-[7.5px] sm:text-[11.5px] tracking-wide text-gray-700 break-words">
+                      {s.items.join(' • ')}
+                    </p>
                   </div>
                 ))}
               </div>
@@ -249,24 +266,29 @@ export default function CvPage() {
 
             <section>
               <MainTitle icon={Briefcase}>EXPÉRIENCES PROFESSIONNELLES & PROJETS</MainTitle>
-              <div className="border-b mt-3 mb-6" style={{ borderColor: LIGHT_BLUE }} />
+              <div className="border-b mt-2 sm:mt-3 mb-4 sm:mb-6" style={{ borderColor: LIGHT_BLUE }} />
 
               <div>
                 {EXPERIENCES.map((exp) => (
-                  <div key={exp.title} className="flex gap-3">
-                    <p className="w-12 shrink-0 text-sm font-bold pt-0.5">{exp.year}</p>
+                  <div key={exp.title} className="flex gap-1.5 sm:gap-3">
+                    <p className="w-7 sm:w-12 shrink-0 text-[8px] sm:text-sm font-bold pt-0.5">{exp.year}</p>
                     <div
-                      className="relative flex-1 min-w-0 border-l-2 pl-4 sm:pl-6 pb-7 last:pb-0" // ✅ min-w-0 et pl-4 sm:pl-6
+                      className="relative flex-1 min-w-0 border-l-2 pl-2.5 sm:pl-6 pb-5 sm:pb-7 last:pb-0"
                       style={{ borderColor: LIGHT_BLUE }}
                     >
                       <span
-                        className="absolute -left-[7px] top-1 w-3 h-3 rounded-full"
+                        className="absolute -left-[5px] sm:-left-[7px] top-1 w-2 h-2 sm:w-3 sm:h-3 rounded-full"
                         style={{ background: LIGHT_BLUE }}
                       />
-                      <h3 className="text-[13px] font-extrabold mb-2 tracking-wide break-words">{exp.title}</h3> {/* ✅ break-words */}
+                      <h3 className="text-[8px] sm:text-[13px] font-extrabold mb-1 sm:mb-2 tracking-wide break-words leading-tight">
+                        {exp.title}
+                      </h3>
                       <ul className="space-y-0.5">
                         {exp.bullets.map((b) => (
-                          <li key={b} className="text-[11.5px] leading-snug text-gray-700">
+                          <li
+                            key={b}
+                            className="text-[7.5px] sm:text-[11.5px] leading-snug text-gray-700 break-words"
+                          >
                             • {b}
                           </li>
                         ))}
@@ -277,7 +299,7 @@ export default function CvPage() {
               </div>
             </section>
 
-            <p className="text-center text-[11px] font-bold mt-10" style={{ color: BLUE }}>
+            <p className="text-center text-[8px] sm:text-[11px] font-bold mt-6 sm:mt-10" style={{ color: BLUE }}>
               A. Denis BALOGOU, Développeur d'application web
             </p>
           </div>
