@@ -1,0 +1,209 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --bg: #060B18;
+  --card: rgba(255, 255, 255, 0.04);
+  --border: rgba(255, 255, 255, 0.08);
+  --text: #F1F5F9;
+  --muted: #8B98B3;
+  --surface-a: #0D1526;
+  --surface-b: #060B18;
+  --nav-scroll-bg: rgba(6, 11, 24, 0.8);
+  --accent-rgb: 34 211 238;
+  --accent2-rgb: 56 189 248;
+}
+
+[data-theme='light'] {
+  --bg: #F6F8FC;
+  --card: rgba(10, 20, 40, 0.04);
+  --border: rgba(10, 20, 40, 0.1);
+  --text: #0B1220;
+  --muted: #5B6478;
+  --surface-a: #E7EDF7;
+  --surface-b: #F1F5FB;
+  --nav-scroll-bg: rgba(246, 248, 252, 0.85);
+  --accent-rgb: 37 99 235;
+  --accent2-rgb: 59 130 246;
+}
+
+html {
+  scroll-behavior: smooth;
+  scroll-padding-top: 88px;
+}
+
+body {
+  background: var(--bg);
+  color: var(--text);
+}
+
+@layer components {
+  .glass {
+    background: var(--card);
+    border: 1px solid var(--border);
+    backdrop-filter: blur(10px);
+  }
+  .pill {
+    border: 1px solid var(--border);
+    border-radius: 9999px;
+  }
+  .btn-cyan {
+    @apply px-6 py-3 rounded-full text-sm font-semibold;
+    background: rgb(var(--accent-rgb));
+    color: #FFFFFF;
+  }
+  [data-theme='dark'] .btn-cyan {
+    background: #22D3EE;
+    color: #04141C;
+  }
+  .btn-cyan:hover {
+    filter: brightness(1.15);
+  }
+  .btn-outline {
+    @apply px-6 py-3 rounded-full text-sm;
+    border: 1px solid var(--border);
+    color: var(--text);
+  }
+  .btn-outline:hover {
+    border-color: rgb(var(--accent-rgb));
+    color: rgb(var(--accent-rgb));
+  }
+  .navlink {
+    @apply text-sm px-4 py-2 rounded-full transition-colors;
+    color: var(--muted);
+  }
+  .navlink.active {
+    background: var(--card);
+    color: var(--text);
+    border: 1px solid var(--border);
+  }
+  .navlink:hover {
+    color: var(--text);
+  }
+  .dot-green {
+    width: 7px;
+    height: 7px;
+    border-radius: 9999px;
+    background: theme('colors.green');
+    box-shadow: 0 0 8px theme('colors.green');
+  }
+  .chip {
+    @apply absolute text-xs px-3 py-2 rounded-[10px] flex items-center gap-1.5;
+  }
+  .nav-scrolled {
+    background: var(--nav-scroll-bg);
+    backdrop-filter: blur(14px);
+    border-bottom: 1px solid var(--border);
+  }
+  .surface-panel {
+    background: linear-gradient(160deg, var(--surface-a), var(--surface-b));
+  }
+  .marquee-track {
+    display: flex;
+    gap: 0.75rem;
+    width: max-content;
+    animation: marquee 18s linear infinite;
+  }
+  .marquee-track:hover {
+    animation-play-state: paused;
+  }
+  .dot-live {
+    position: relative;
+    width: 7px;
+    height: 7px;
+    border-radius: 9999px;
+    background: theme('colors.green');
+  }
+  .dot-live::after {
+    content: '';
+    position: absolute;
+    inset: -4px;
+    border-radius: 9999px;
+    border: 1.5px solid theme('colors.green');
+    animation: dot-ping 1.8s cubic-bezier(0, 0, 0.2, 1) infinite;
+  }
+  .badge-live {
+    position: relative;
+    overflow: hidden;
+    animation: badge-breathe 3s ease-in-out infinite;
+  }
+  .badge-live::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -150%;
+    width: 60%;
+    height: 100%;
+    background: linear-gradient(120deg, transparent, rgba(255, 255, 255, 0.22), transparent);
+    animation: badge-shimmer 4s ease-in-out infinite;
+  }
+}
+
+@keyframes marquee {
+  from {
+    transform: translateX(0);
+  }
+  to {
+    transform: translateX(-50%);
+  }
+}
+
+@keyframes dot-ping {
+  0% {
+    transform: scale(0.6);
+    opacity: 0.8;
+  }
+  75%,
+  100% {
+    transform: scale(1.8);
+    opacity: 0;
+  }
+}
+
+@keyframes badge-breathe {
+  0%,
+  100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.025);
+  }
+}
+
+@keyframes badge-shimmer {
+  0% {
+    left: -150%;
+  }
+  30% {
+    left: 150%;
+  }
+  100% {
+    left: 150%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation: none !important;
+    transition: none !important;
+  }
+}
+
+
+.cv-page {
+  font-family: 'Garet', 'Montserrat', sans-serif;
+}
+.cv-page .font-display {
+  font-family: inherit;
+}
+
+
+:root {
+  --brand-react: #61DAFB;
+  --brand-laravel: #FF2D20;
+}
+[data-theme='light'] {
+  --brand-react: #0B7FA3;
+  --brand-laravel: #D9251A;
+}
